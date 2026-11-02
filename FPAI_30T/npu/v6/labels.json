@@ -1,0 +1,55 @@
+{
+  "schema": "V6_LABELS_1",
+  "num_classes": 18,
+  "index_base": 0,
+  "classes": [
+    "16ASK",
+    "16FSK",
+    "16QAM",
+    "2ASK",
+    "2FSK",
+    "2PSK",
+    "4ASK",
+    "4FSK",
+    "4PSK",
+    "64QAM",
+    "8ASK",
+    "8FSK",
+    "8PSK",
+    "AM-DSB-SC",
+    "AM-DSB-WC",
+    "AM-SSB-SC",
+    "AM-SSB-WC",
+    "FM"
+  ],
+  "index_to_label": {
+    "0": "16ASK",
+    "1": "16FSK",
+    "2": "16QAM",
+    "3": "2ASK",
+    "4": "2FSK",
+    "5": "2PSK",
+    "6": "4ASK",
+    "7": "4FSK",
+    "8": "4PSK",
+    "9": "64QAM",
+    "10": "8ASK",
+    "11": "8FSK",
+    "12": "8PSK",
+    "13": "AM-DSB-SC",
+    "14": "AM-DSB-WC",
+    "15": "AM-SSB-SC",
+    "16": "AM-SSB-WC",
+    "17": "FM"
+  },
+  "aliases": {
+    "BPSK": "2PSK",
+    "QPSK": "4PSK"
+  },
+  "closed_set": true,
+  "unknown_class_index": null,
+  "excluded_classes": [
+    "16PSK",
+    "256QAM"
+  ]
+}

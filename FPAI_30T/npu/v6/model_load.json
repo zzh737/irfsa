@@ -1,0 +1,26 @@
+{
+  "schema": "V6_LOAD_1",
+  "model_name": "v6",
+  "source_onnx": "model.onnx",
+  "npu_json": "model.json",
+  "npu_raw": "model.raw",
+  "labels": "labels.json",
+  "preprocessing": "preprocess.json",
+  "thresholds": "threshold.json",
+  "icraft_required_version": "3.36.1",
+  "target": "zhuge/ZG330",
+  "compiled_input_index": 0,
+  "compiled_output_index": 0,
+  "input_shape": [
+    1,
+    2,
+    1024
+  ],
+  "output_shape": [
+    1,
+    18
+  ],
+  "external_boundary_dtype": "float32",
+  "generated_graph_mapping": "quantization.json",
+  "board_compatible_worker_supplied": false
+}

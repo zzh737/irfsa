@@ -1,0 +1,2257 @@
+{
+  "schema": "V6_QUANTIZATION_1",
+  "toolchain": "iCraft 3.36.1",
+  "target": "ZG330",
+  "method": "KLD per-channel INT8, official QuantizePass",
+  "calibration_windows": 1152,
+  "external_input": [
+    {
+      "_type_key": "icraft::xir::Value",
+      "dtype": {
+        "_type_key": "icraft::xir::TensorType",
+        "element_dtype": "@fp(32)",
+        "layout": "@layout(**C)",
+        "merged_distrs": [
+          "@merged_distr([2]^ZERO:{v:[0, 1024)})"
+        ],
+        "shape": [
+          1,
+          2,
+          1024
+        ]
+      },
+      "mtype": "@chunk(33@0)",
+      "name": "",
+      "tags": {},
+      "v_id": 0
+    }
+  ],
+  "external_output": [
+    {
+      "_type_key": "icraft::xir::Value",
+      "dtype": {
+        "_type_key": "icraft::xir::TensorType",
+        "element_dtype": "@fp(32)",
+        "layout": "@layout(*C)",
+        "merged_distrs": [
+          "@merged_distr([1]^ZERO:{v:[0, 18)})"
+        ],
+        "shape": [
+          1,
+          18
+        ]
+      },
+      "mtype": "@chunk(32@0)",
+      "name": "",
+      "tags": {},
+      "v_id": 669
+    }
+  ],
+  "manual_external_quantization_required": false,
+  "zero_point_note": "Preserve the SDK encoded zero_points arrays; do not invent a scalar global zero point.",
+  "scale_note": "Scales below are copied verbatim from the quantized graph. Compiled graph boundary Cast ops perform conversion.",
+  "quantized_tensor_types": {
+    "659": {
+      "shape": [
+        1,
+        2,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "661": {
+      "shape": [
+        1,
+        2,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "338": {
+      "shape": [
+        1,
+        1024,
+        2
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]2*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "340": {
+      "shape": [
+        1,
+        1,
+        1024,
+        2
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]2*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "6": {
+      "shape": [
+        1,
+        7,
+        2,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0023833753,0.00401681,0.0054365564,0.016925914,0.0028185726,0.0017837306,0.0033554388,0.009636087,0.0039230795,0.0078027886,0.0045327293,0.0029131777,0.0040055043,0.0019729086,0.0037756772,0.005006981,0.0024195598,0.0032472676,0.016909055,0.003072606,0.0065858746,0.002046562,0.012745257,0.0046734693,0.0028581794,0.002409998,0.0027602448,0.004072667,0.0037062524,0.0029413728,0.0032801249,0.0046912385)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "7": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "8": {
+      "shape": [
+        1,
+        1,
+        1024,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.046140518)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "10": {
+      "shape": [
+        1,
+        1,
+        1024,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.046140518)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "12": {
+      "shape": [
+        1,
+        1,
+        32,
+        16
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0035626425,0.0067824638,0.005935177,0.0052046333,0.0027102765,0.004353613,0.004197807,0.009481965,0.0024678987,0.0032356682,0.0037786597,0.0035203951,0.009152027,0.004711122,0.0050640004,0.0035494866)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "13": {
+      "shape": [
+        16
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "14": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.073593296)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "16": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.073593296)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "18": {
+      "shape": [
+        1,
+        3,
+        16,
+        16
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.004633935,0.0026956408,0.0049885907,0.0031867267,0.003859509,0.0048653116,0.0042603756,0.0027736465,0.003242716,0.0017441777,0.0025449872,0.0029506828,0.0037916095,0.0033101824,0.003084671,0.004431808)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "19": {
+      "shape": [
+        16
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "20": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "22": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "24": {
+      "shape": [
+        1,
+        15,
+        16,
+        16
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.001474871,0.0015816069,0.0015028758,0.0012179906,0.0014340291,0.0013076329,0.0016549488,0.0011894557,0.0012749794,0.0015887212,0.0018677231,0.0015128036,0.0009827245,0.001289431,0.0017556733,0.0010830184)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "25": {
+      "shape": [
+        16
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "26": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "28": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "30": {
+      "shape": [
+        1,
+        31,
+        16,
+        16
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0009828821,0.0027066565,0.0008318392,0.001415491,0.0018529897,0.002193776,0.0013913725,0.0024217188,0.001291521,0.0011770867,0.0023222696,0.0015330189,0.00092811725,0.0015571116,0.0014718864,0.0020399415)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "31": {
+      "shape": [
+        16
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "32": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "34": {
+      "shape": [
+        1,
+        1,
+        1024,
+        16
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]16*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "38": {
+      "shape": [
+        1,
+        1,
+        1024,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06714722)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "40": {
+      "shape": [
+        1,
+        1,
+        48,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0029444047,0.008053099,0.003025406,0.003210242,0.003961468,0.0042643156,0.005857598,0.0050537186,0.0033990752,0.0060140695,0.004106028,0.010996802,0.0048012193,0.0034285674,0.0050404584,0.0046407897,0.005977628,0.005473674,0.0042555425,0.004583225,0.0032302747,0.004342049,0.009998764,0.0044175815,0.0024671901,0.00567466,0.004838192,0.004237603,0.0045587965,0.0044293674,0.005887815,0.0038768707)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "41": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "42": {
+      "shape": [
+        1,
+        1,
+        1024,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.069616705)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "45": {
+      "shape": [
+        1,
+        1,
+        1024,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.07662655)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "47": {
+      "shape": [
+        1,
+        1,
+        1024,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.07662655)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "49": {
+      "shape": [
+        1,
+        1,
+        512,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.07662655)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "51": {
+      "shape": [
+        1,
+        5,
+        32,
+        64
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0010856736,0.00085867225,0.0012995963,0.0010299922,0.0008776459,0.00071561616,0.000914052,0.000822036,0.0011202404,0.0006947462,0.0009904553,0.0006100026,0.0008554987,0.0006893956,0.0010843669,0.0006596359,0.0004926449,0.0011141723,0.0012142393,0.001235341,0.0010925841,0.00091938215,0.0016775777,0.000929595,0.0010946278,0.0011191419,0.0009400543,0.00093653344,0.00094521436,0.00099101,0.0011906101,0.0008501366,0.0008817672,0.00068652694,0.00048952876,0.0009397953,0.0014032002,0.0010621642,0.0020045415,0.0008498136,0.0006400987,0.0012243852,0.0006450957,0.00081788475,0.00086403464,0.0014057874,0.0010012162,0.0010743662,0.00070600124,0.0007454814,0.0011275124,0.0021082321,0.0011684655,0.0014592847,0.0011787977,0.001100564,0.00071518926,0.00061352045,0.0009660727,0.00087076286,0.00079233083,0.0007428384,0.0007879617,0.0007649306)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "52": {
+      "shape": [
+        64
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "53": {
+      "shape": [
+        1,
+        1,
+        512,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.03937742)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "55": {
+      "shape": [
+        1,
+        1,
+        512,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.03937742)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "57": {
+      "shape": [
+        1,
+        1,
+        256,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.03937742)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "59": {
+      "shape": [
+        1,
+        1,
+        64,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0030530076,0.00838554,0.0031912182,0.007922088,0.0048270514,0.003837768,0.0152895795,0.008099404,0.006250758,0.0069205915,0.0045170463,0.0056068785,0.0053824857,0.008209648,0.009026267,0.004349661,0.0047357054,0.0045467787,0.0061299372,0.004131375,0.006687304,0.0056125824,0.0041758893,0.0054058107,0.004730956,0.0070222486,0.005530245,0.004344896,0.005161872,0.005117356,0.005662712,0.0063905786)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "60": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "61": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.05910277)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "63": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.05910277)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "65": {
+      "shape": [
+        1,
+        3,
+        32,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0019458724,0.0021553736,0.002105274,0.0023651873,0.0028747376,0.001576999,0.0027603374,0.0036344947,0.004344283,0.0024089655,0.0025081912,0.0023065137,0.0031292257,0.0033655968,0.0018120788,0.0023049165,0.002089758,0.002400026,0.0036242555,0.0030226454,0.0034088136,0.0020099005,0.0024182,0.0016706184,0.005453516,0.001968303,0.002191693,0.0019491722,0.002831243,0.0015946962,0.0032635578,0.002228159)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "66": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "67": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "69": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "71": {
+      "shape": [
+        1,
+        15,
+        32,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0011829297,0.0013865653,0.0012061914,0.0013415407,0.001341932,0.0007026697,0.0013756038,0.00052452326,0.0011318364,0.0010570617,0.00084309245,0.0018547281,0.00077450875,0.0011755384,0.0012716014,0.00070584967,0.0007242048,0.0019748681,0.0010021955,0.0018166312,0.00074068987,0.0009312703,0.0011138998,0.0010290414,0.0008234746,0.0009594169,0.0006999118,0.0014285413,0.0013843719,0.00084000936,0.0013257382,0.0013977903)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "72": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "73": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "75": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "77": {
+      "shape": [
+        1,
+        31,
+        32,
+        32
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0008569295,0.0007190572,0.0015354966,0.00096670544,0.0012947926,0.0015246911,0.0013616153,0.0014458875,0.00082719617,0.0014345249,0.0007474447,0.0008571287,0.0016033584,0.0010187321,0.00088799803,0.001428031,0.0009171336,0.00090427534,0.0016461986,0.0008237993,0.0016773125,0.0006092832,0.0012895712,0.0018736192,0.001504556,0.00091713725,0.00091129343,0.0008211553,0.0010539306,0.0012689441,0.0011617518,0.0012213964)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "78": {
+      "shape": [
+        32
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "79": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "81": {
+      "shape": [
+        1,
+        1,
+        256,
+        32
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]32*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "85": {
+      "shape": [
+        1,
+        1,
+        256,
+        96
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]96*0.033592477)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "87": {
+      "shape": [
+        1,
+        1,
+        96,
+        64
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0062333434,0.009512802,0.011545578,0.004565676,0.0062938496,0.008992081,0.010126326,0.006530717,0.008462804,0.006467252,0.011195146,0.0072539453,0.011704417,0.006064151,0.0060730996,0.006226373,0.009682112,0.01465974,0.006296127,0.009187817,0.006766517,0.014279426,0.007889447,0.007045845,0.0071189357,0.0091262255,0.004803399,0.007917517,0.0061973287,0.013339945,0.007909196,0.01272651,0.005594895,0.006323432,0.008819655,0.0067102597,0.009491259,0.0066751484,0.009751054,0.006905644,0.009966858,0.011160018,0.005200023,0.004691866,0.0050960174,0.009339063,0.00883606,0.007491146,0.011208283,0.0055585196,0.010239083,0.0047273454,0.006082125,0.011396396,0.010878756,0.009665351,0.006746212,0.0060745804,0.008107432,0.0155266095,0.007879163,0.009527924,0.0059135756,0.006213863)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "88": {
+      "shape": [
+        64
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "89": {
+      "shape": [
+        1,
+        1,
+        256,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.06260817)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "92": {
+      "shape": [
+        1,
+        1,
+        256,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.061521567)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "94": {
+      "shape": [
+        1,
+        1,
+        256,
+        64
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]64*0.061521567)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "96": {
+      "shape": [
+        1,
+        5,
+        64,
+        128
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.001619627,0.00097203505,0.0026358825,0.002021437,0.0017672678,0.0016009095,0.0019665856,0.002767985,0.0014465009,0.0011968933,0.002283013,0.0017499859,0.0014102363,0.0017170362,0.0023424143,0.0015228399,0.001289101,0.0015055466,0.0014810954,0.0020265733,0.001964432,0.0017540015,0.0010588645,0.0021442508,0.0015226861,0.0019085009,0.0022514262,0.0014546702,0.0018991245,0.001513616,0.001466898,0.0013933387,0.0022726988,0.0013426539,0.0012511562,0.0021783959,0.001848412,0.0013600551,0.0012616025,0.0010631937,0.0018583972,0.0013573557,0.0010715921,0.0012261258,0.0014462384,0.0015366416,0.0011202991,0.0014591945,0.0015356778,0.0014602478,0.0016029773,0.001300629,0.0020547009,0.0014838984,0.0013309444,0.0018528246,0.0016118514,0.0009788828,0.0012904515,0.0019041012,0.0021081823,0.0011063181,0.0013782912,0.0018205354,0.0020410751,0.0018617837,0.0015229445,0.0017044342,0.001883522,0.0011619565,0.0016558545,0.0018384143,0.002007289,0.0026185263,0.0022273299,0.0020264734,0.0012551268,0.0017163644,0.0014846907,0.0015492303,0.0016728281,0.00154512,0.0011684645,0.0014972097,0.0013541873,0.0012863094,0.0009395962,0.001364055,0.0013960686,0.0012983285,0.0017004398,0.0015879136,0.0016073517,0.0010755563,0.001892194,0.0015056873,0.0013749159,0.0024009051,0.0024511819,0.0016974091,0.0012447052,0.0015314827,0.0016929166,0.0015832391,0.0012518998,0.0018125826,0.0016027067,0.0012449562,0.0016225526,0.0021154373,0.0018368046,0.0011349232,0.0012954931,0.0023641228,0.0013512978,0.0020621456,0.0015676809,0.0012778835,0.0016190798,0.0024997236,0.000943569,0.001435434,0.0023589388,0.001670596,0.0014779078,0.0010815714,0.0012758233,0.0012973114)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "97": {
+      "shape": [
+        128
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "98": {
+      "shape": [
+        1,
+        1,
+        256,
+        128
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]128*0.05991489)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "100": {
+      "shape": [
+        1,
+        1,
+        256,
+        128
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]128*0.05991489)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "102": {
+      "shape": [
+        1,
+        1,
+        1,
+        128
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]128*0.05991489)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "106": {
+      "shape": [
+        1,
+        128
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]128*0.05991489)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "108": {
+      "shape": [
+        128,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0044664377,0.004877635,0.00267202,0.004626199,0.0041335314,0.004048286,0.0046769464,0.005502736,0.0039160745,0.0031555556,0.0042483467,0.0045072585,0.0033505019,0.004195009,0.004068803,0.0037769796,0.0045209015,0.004382767)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "109": {
+      "shape": [
+        18
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "110": {
+      "shape": [
+        1,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]18*0.057607844)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "663": {
+      "shape": [
+        1,
+        2,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "665": {
+      "shape": [
+        1,
+        2,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "112": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "116": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "114": {
+      "shape": [
+        1,
+        1024
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "118": {
+      "shape": [
+        1,
+        1024
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "120": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "122": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "125": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.082632706)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "127": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "129": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "132": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.08302489)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "135": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.08954479)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "137": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "138": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "141": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.07881501)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "144": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.079534374)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "147": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.08299586)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "149": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "150": {
+      "shape": [
+        1,
+        1023
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1023*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "152": {
+      "shape": [
+        1,
+        1,
+        1023,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "154": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "158": {
+      "shape": [
+        1,
+        1,
+        1023,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "160": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "164": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "166": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "169": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.054705806)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "171": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "173": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "176": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.054814726)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "179": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.034686726)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "181": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "182": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "185": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.09227522)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "188": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.09234371)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "191": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.115011305)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "193": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "194": {
+      "shape": [
+        1,
+        1022
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1022*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "196": {
+      "shape": [
+        1,
+        1,
+        1022,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "198": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "202": {
+      "shape": [
+        1,
+        1,
+        1022,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "204": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "208": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "210": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "213": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.07756595)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "215": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "217": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.030305143)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "220": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.076083384)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "223": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.092751876)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "225": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "226": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "229": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.056913126)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "232": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.056345485)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "235": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.057353612)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "237": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.0039365273)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "238": {
+      "shape": [
+        1,
+        1020
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1020*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "240": {
+      "shape": [
+        1,
+        1,
+        1020,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "242": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "246": {
+      "shape": [
+        1,
+        1,
+        1020,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "248": {
+      "shape": [
+        1,
+        1,
+        1024,
+        1
+      ],
+      "layout": "@layout(***C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "252": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "254": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "256": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "258": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "260": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "262": {
+      "shape": [
+        1,
+        1,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "269": {
+      "shape": [
+        1,
+        6,
+        1024
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]1024*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "342": {
+      "shape": [
+        1,
+        1024,
+        6
+      ],
+      "layout": "@layout(**C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]6*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "344": {
+      "shape": [
+        1,
+        1,
+        1024,
+        6
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]6*0.057505652)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "275": {
+      "shape": [
+        1,
+        7,
+        6,
+        24
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.005063616,0.0011131148,0.0076350477,0.00384776,0.0014141981,0.009119348,0.019996272,0.0020782135,0.00801344,0.002177609,0.0031491276,0.010439418,0.0018263487,0.002446572,0.0038858517,0.004918468,0.0019017706,0.0023528514,0.0023745482,0.0019159599,0.0036978244,0.0025467102,0.0027977184,0.006791327)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "276": {
+      "shape": [
+        24
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "277": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.06188001)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "279": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.06188001)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "281": {
+      "shape": [
+        1,
+        5,
+        24,
+        24
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0022447794,0.0030375912,0.0025728599,0.0019555553,0.0030488719,0.0030112932,0.0030238212,0.0041008545,0.0034056879,0.0027116565,0.004028543,0.0021705762,0.004173207,0.0038668516,0.0031356304,0.0052578175,0.0028607755,0.0018369905,0.002170955,0.0024411762,0.002789776,0.0026256375,0.0027763133,0.0030293353)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "282": {
+      "shape": [
+        24
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "283": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.055192452)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "285": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.055192452)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "287": {
+      "shape": [
+        1,
+        5,
+        24,
+        24
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0020135173,0.004741602,0.0032872094,0.004199408,0.0024168591,0.004143084,0.0032401097,0.003320098,0.004678555,0.0023658138,0.0052791117,0.0027508857,0.001864775,0.0025546222,0.0031329049,0.0025746995,0.003380991,0.0041791387,0.0021662463,0.0049958164,0.0028983844,0.0031891416,0.005313476,0.0030356396)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "288": {
+      "shape": [
+        24
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "289": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.07249821)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "292": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.07221647)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "294": {
+      "shape": [
+        1,
+        1,
+        1024,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.07221647)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "296": {
+      "shape": [
+        1,
+        1,
+        256,
+        24
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]24*0.07221647)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "298": {
+      "shape": [
+        1,
+        5,
+        24,
+        48
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.003609628,0.005339534,0.0056297514,0.0020691357,0.002248483,0.005153581,0.002175028,0.0016256173,0.0028198597,0.006530147,0.0037128495,0.0032453546,0.0033016053,0.003911634,0.0042016287,0.00446289,0.0063534775,0.0027035065,0.0032460336,0.0021733372,0.0031239716,0.0030070378,0.004589193,0.0024777213,0.0036405693,0.005681521,0.0022912435,0.0027659268,0.002482616,0.0045482586,0.003064946,0.0027912846,0.0028651175,0.0029238353,0.004191753,0.0020542953,0.0028704382,0.002364998,0.0051560868,0.0023380658,0.0074914596,0.003468096,0.0043839044,0.0047702603,0.0039503626,0.0028318777,0.002242192,0.002560395)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "299": {
+      "shape": [
+        48
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "300": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.042154063)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "302": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.042154063)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "304": {
+      "shape": [
+        1,
+        5,
+        48,
+        48
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0044217766,0.0040039863,0.0027460994,0.002382958,0.003433661,0.002265717,0.0023137042,0.0034108073,0.0030866212,0.0034420271,0.004038442,0.0025184979,0.0026108879,0.0032306414,0.0028793204,0.0032148573,0.0027277232,0.0021061844,0.0030471652,0.0024364325,0.0039849943,0.002370801,0.0029934247,0.002771864,0.0019902743,0.0032109483,0.0039833263,0.0058094957,0.0027025328,0.0025578958,0.003819056,0.005247147,0.0031155727,0.0049820584,0.0042997943,0.004414496,0.0030201036,0.002122166,0.003891425,0.0041917125,0.0030823853,0.0025050887,0.005216482,0.0037668594,0.005534466,0.0026400967,0.0023765594,0.002447285)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "305": {
+      "shape": [
+        48
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "306": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.056226816)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "308": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.056226816)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "310": {
+      "shape": [
+        1,
+        5,
+        48,
+        48
+      ],
+      "layout": "@layout(HWIO)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0037136,0.0034885916,0.0036244146,0.0037038089,0.003915694,0.00325256,0.0029100114,0.0033902873,0.0034601055,0.0041642436,0.00401389,0.0031302182,0.003128946,0.0029963101,0.0035816124,0.003442113,0.00421125,0.0041320007,0.0040549114,0.004510418,0.0033272114,0.0038552617,0.004055782,0.0043162233,0.0039170757,0.0035335165,0.0046168976,0.005550171,0.0033697325,0.003269223,0.004597974,0.0049196244,0.0032012195,0.0045085247,0.004043398,0.0053282036,0.0035823889,0.0043412433,0.003117353,0.0040290128,0.0038192514,0.004496085,0.0035243656,0.003350517,0.0050459094,0.004464504,0.0033740944,0.0030809054)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "311": {
+      "shape": [
+        48
+      ],
+      "layout": "@layout(O)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    },
+    "312": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.0731522)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "315": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06864754)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "317": {
+      "shape": [
+        1,
+        1,
+        256,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06864754)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "319": {
+      "shape": [
+        1,
+        1,
+        64,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06864754)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "321": {
+      "shape": [
+        1,
+        1,
+        1,
+        48
+      ],
+      "layout": "@layout(NHWC)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06864754)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "325": {
+      "shape": [
+        1,
+        48
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]48*0.06864754)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "327": {
+      "shape": [
+        48,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]0.0012476909,0.0014236933,0.0025630768,0.0013503609,0.0008753927,0.0017529207,0.002439723,0.00081407634,0.0019194569,0.0023127964,0.0011751157,0.0012223173,0.0023941444,0.0022326994,0.0017554361,0.0027565027,0.002831438,0.001406741)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "328": {
+      "shape": [
+        1,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]18*0.023583995)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "331": {
+      "shape": [
+        1,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1]18*0.06244628)",
+      "storage_dtype": "@sint(8)",
+      "zero_points": []
+    },
+    "667": {
+      "shape": [
+        1,
+        18
+      ],
+      "layout": "@layout(*C)",
+      "_type_key": "icraft::xir::QuantizedType",
+      "expressed_dtype": "@fp(32)",
+      "scale": "@scales([axis=-1])",
+      "storage_dtype": "@tf(32)",
+      "zero_points": []
+    }
+  },
+  "board_tested": false
+}

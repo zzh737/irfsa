@@ -1,0 +1,14 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               32M
+Start Address      0x00000000
+End Address        0x01FFFFFF
+Checksum           0x5E751B5B
+Fill Value         0xFF
+
+Addr1         Addr2         Date                    File(s)                                                                            Checksum
+0x00000000    0x00A9D007    Nov  1 00:02:34 2026    D:/FPGA_programs/AD9361_Packer/AD9361_Packer/reports/system_build/ku5p_HW23.bit    0x099B5353
+File Checksum Total                                                                                                                    0x099B5353

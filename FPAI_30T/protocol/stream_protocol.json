@@ -1,0 +1,314 @@
+{
+  "schema_version": 2,
+  "protocol_release": "1.0",
+  "specification": "UDP协议_v1.md",
+  "transport": "UDP",
+  "network": {
+    "ip_version": 4,
+    "wujing_ip": "192.168.10.1",
+    "ku5p_ip": "192.168.10.2",
+    "netmask": "255.255.255.0",
+    "data_source_port": 40000,
+    "data_destination_port": 40000,
+    "control_source_port": 40001,
+    "control_destination_port": 40001,
+    "arp_required": true,
+    "ipv4_df": true,
+    "udp_checksum_required": true
+  },
+  "endianness": {
+    "header": "big",
+    "iq_payload": "little"
+  },
+  "mtu_bytes": 1500,
+  "header_bytes": 64,
+  "magic": "RFIQ",
+  "version": 1,
+  "types": {
+    "iq": 1,
+    "power_spectrum_reserved_optional": 2
+  },
+  "iq": {
+    "points_per_fragment": 256,
+    "fragments_per_window": 4,
+    "bytes_per_point": 4,
+    "window_points": 1024
+  },
+  "crc": "CRC-32/ISO-HDLC over the raw payload only",
+  "reassembly_key": [
+    "type",
+    "stream_id",
+    "capture_id",
+    "window_seq"
+  ],
+  "discard_on": [
+    "missing_fragment",
+    "duplicate_conflicting_fragment",
+    "header_mismatch",
+    "crc_failure",
+    "timeout"
+  ],
+  "data_flags": {
+    "discontinuity": 1,
+    "first_window_of_capture": 2,
+    "overload": 4,
+    "event_mode": 8
+  },
+  "continuous_mode": {
+    "hop_points": 1024,
+    "sample_index": "window_seq * 1024",
+    "overlap_reassembled_on_receiver": true
+  },
+  "reassembly": {
+    "timeout_ms": 100,
+    "max_windows_per_stream": 256,
+    "sequence_bandwidth": 256,
+    "identical_duplicate": "ignore",
+    "conflicting_duplicate": "invalidate_window",
+    "publish": "strictly_increasing_window_seq",
+    "capture": "acknowledged_START_only"
+  },
+  "control": {
+    "magic": "RFCT",
+    "version": 1,
+    "header_bytes": 32,
+    "response_payload_bytes": 96,
+    "max_payload_bytes": 1440,
+    "endianness": "big",
+    "kind": {
+      "request": 0,
+      "response": 1
+    },
+    "commands": {
+      "SET_RF": 1,
+      "SET_STREAM": 2,
+      "START": 3,
+      "STOP": 4,
+      "GET_STATUS": 5,
+      "GET_RX_INFO": 6
+    },
+    "request_payload_bytes": {
+      "SET_RF": 24,
+      "SET_STREAM": 28,
+      "START": 4,
+      "STOP": 0,
+      "GET_STATUS": 0,
+      "GET_RX_INFO": 0
+    },
+    "crc": "CRC-32/ISO-HDLC over header with bytes 28..31 zeroed plus payload",
+    "retry_interval_ms": 500,
+    "max_retries_after_initial_send": 12,
+    "start_execution_timeout_ms": 5000,
+    "stop_execution_timeout_ms": 1000,
+    "request_idempotency": true,
+    "minimum_cached_results": 64,
+    "minimum_result_retention_seconds": 60,
+    "capture_id_owner": "wujing_persistent_non_reusing_u32",
+    "boot_id_owner": "ku5p_persistent_non_reusing_u32",
+    "apply_policy": "IDLE_SET_RF_SET_STREAM_then_START_atomic_commit",
+    "states": {
+      "IDLE": 0,
+      "STARTING": 1,
+      "RUNNING": 2,
+      "STOPPING": 3,
+      "ERROR": 4
+    },
+    "statuses": {
+      "OK": 0,
+      "BAD_COMMAND": 1,
+      "BAD_LENGTH": 2,
+      "BAD_PARAMETER": 3,
+      "BAD_STATE": 4,
+      "UNSUPPORTED": 5,
+      "BUSY": 6,
+      "HW_TIMEOUT": 7,
+      "HW_FAILURE": 8,
+      "BOOT_MISMATCH": 9,
+      "REQUEST_CONFLICT": 10,
+      "STALE_REQUEST": 11,
+      "CONFIG_CONFLICT": 12,
+      "CAPTURE_REUSED": 13
+    },
+    "header_fields": [
+      [
+        0,
+        "magic",
+        "4 bytes"
+      ],
+      [
+        4,
+        "version",
+        "u8"
+      ],
+      [
+        5,
+        "kind",
+        "u8"
+      ],
+      [
+        6,
+        "header_len",
+        "u16"
+      ],
+      [
+        8,
+        "request_id",
+        "u32"
+      ],
+      [
+        12,
+        "config_id",
+        "u32"
+      ],
+      [
+        16,
+        "opcode",
+        "u16"
+      ],
+      [
+        18,
+        "status",
+        "u16"
+      ],
+      [
+        20,
+        "payload_len",
+        "u32"
+      ],
+      [
+        24,
+        "boot_id",
+        "u32"
+      ],
+      [
+        28,
+        "message_crc32",
+        "u32"
+      ]
+    ],
+    "response_payload_bytes_by_opcode": {
+      "1": 96,
+      "2": 96,
+      "3": 96,
+      "4": 96,
+      "5": 96,
+      "6": 32
+    },
+    "rx_info": {
+      "schema": 1,
+      "body_format": ">8I",
+      "boot_zero_discovery": true,
+      "config_id": 0,
+      "error_high_water_statuses": [
+        10,
+        11
+      ],
+      "fields": [
+        "schema",
+        "rx_request_high",
+        "config_high",
+        "capture_high",
+        "adc_sample_rate_hz",
+        "rx_bandwidth_hz",
+        "rx_gain_mdB",
+        "capabilities"
+      ],
+      "capabilities": 3,
+      "fresh_GET_STATUS_required": true,
+      "lease": false
+    },
+    "response_payload_bytes_note": "96 only for opcodes 1..5; GET_RX_INFO uses separate 32-byte body"
+  },
+  "header_fields": [
+    [
+      0,
+      "magic",
+      "4 bytes"
+    ],
+    [
+      4,
+      "version",
+      "u8"
+    ],
+    [
+      5,
+      "type",
+      "u8"
+    ],
+    [
+      6,
+      "header_len",
+      "u16"
+    ],
+    [
+      8,
+      "stream_id",
+      "u32"
+    ],
+    [
+      12,
+      "capture_id",
+      "u32"
+    ],
+    [
+      16,
+      "window_seq",
+      "u32"
+    ],
+    [
+      20,
+      "fragment_index",
+      "u16"
+    ],
+    [
+      22,
+      "fragment_count",
+      "u16"
+    ],
+    [
+      24,
+      "sample_index",
+      "u64"
+    ],
+    [
+      32,
+      "lo_hz",
+      "u64"
+    ],
+    [
+      40,
+      "fs_eff_hz",
+      "u32"
+    ],
+    [
+      44,
+      "baseband_center_hz",
+      "i32"
+    ],
+    [
+      48,
+      "item_count",
+      "u16"
+    ],
+    [
+      50,
+      "flags",
+      "u16"
+    ],
+    [
+      52,
+      "rx_gain_mdB",
+      "i32"
+    ],
+    [
+      56,
+      "payload_crc32",
+      "u32"
+    ],
+    [
+      60,
+      "reserved",
+      "u32"
+    ]
+  ]
+}

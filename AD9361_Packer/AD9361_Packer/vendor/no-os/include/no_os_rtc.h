@@ -1,0 +1,68 @@
+/***************************************************************************//**
+ *   @file   no_os_rtc.h
+ *   @brief  Header of the RTC interface
+ *   @author Andrei Drimbarean (andrei.drimbarean@analog.com)
+********************************************************************************
+ * Copyright 2020(c) Analog Devices, Inc.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+*******************************************************************************/
+
+#ifndef _NO_OS_RTC_H_
+#define _NO_OS_RTC_H_
+
+#include <stdint.h>
+
+/**
+ * @struct no_os_rtc_desc
+ * @brief Structure holding RTC descriptor.
+ */
+struct no_os_rtc_desc {
+	/** ID of the real time clock core. */
+	uint8_t id;
+	/** Frequency of the RTC */
+	uint32_t freq;
+	/** Load value of the RTC */
+	uint32_t load;
+	/** Device specific RTC parameters. */
+	void *extra;
+};
+
+/**
+ * @struct no_os_rtc_init_param
+ * @brief Structure holding RTC initialization parameters.
+ */
+struct no_os_rtc_init_param {
+	/** ID of the real time clock core. */
+	uint8_t id;
+	/** Frequency of the RTC */
+	uint32_t freq;
+	/** Load value of the RTC */
+	uint32_t load;
+	/** Device specific RTC parameters. */
+	void *extra;
+};
+
+/** Initialize the RTC peripheral. */
+int32_t no_os_rtc_init(struct no_os_rtc_desc **device,
+		       struct no_os_rtc_init_param *init_param);
+
+/** Free the resources allocated by no_os_rtc_init(). */
+int32_t no_os_rtc_remove(struct no_os_rtc_desc *dev);
+
+/** Start the real time clock. */
+int32_t no_os_rtc_start(struct no_os_rtc_desc *dev);
+
+/** Stop the real time clock. */
+int32_t no_os_rtc_stop(struct no_os_rtc_desc *dev);
+
+/** Get the current count for the real time clock. */
+int32_t no_os_rtc_get_cnt(struct no_os_rtc_desc *dev, uint32_t *tmr_cnt);
+
+/** Set the current count for the real time clock. */
+int32_t no_os_rtc_set_cnt(struct no_os_rtc_desc *dev, uint32_t tmr_cnt);
+
+/** Set the time at which an interrupt will occur */
+int32_t no_os_rtc_set_irq_time(struct no_os_rtc_desc *dev, uint32_t irq_time);
+
+#endif // _NO_OS_RTC_H_

@@ -1,0 +1,7 @@
+#define HAVE_SPLIT_GAIN_TABLE 1
+#define AD9361_DEVICE 1
+#define AD9364_DEVICE 0
+#define AD9363A_DEVICE 0
+#define AXI_ADC_NOT_PRESENT
+#define SPI_DEVICE_ID 0
+#define SPI_CS 0

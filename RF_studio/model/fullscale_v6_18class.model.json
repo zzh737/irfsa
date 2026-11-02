@@ -1,0 +1,306 @@
+{
+  "schema": "KU5P_IQ_MODEL_1",
+  "classes": [
+    "16ASK",
+    "16FSK",
+    "16QAM",
+    "2ASK",
+    "2FSK",
+    "2PSK",
+    "4ASK",
+    "4FSK",
+    "4PSK",
+    "64QAM",
+    "8ASK",
+    "8FSK",
+    "8PSK",
+    "AM-DSB-SC",
+    "AM-DSB-WC",
+    "AM-SSB-SC",
+    "AM-SSB-WC",
+    "FM"
+  ],
+  "fs_hz": 1000000,
+  "window_points": 1024,
+  "normalization": "per_window_rms_no_dc",
+  "output_kind": "logits",
+  "input_name": "iq",
+  "output_name": "logits",
+  "fixture_only": false,
+  "architecture": "correlation_multiscale",
+  "source_checkpoint": "E:\\嵌赛\\v6\\py\\outputs\\fullscale_v3_18class_finetune512_20261101\\best.pt",
+  "checkpoint_sha256": "1be3684a9b36fdfa3b63f42fa3b8b421c4402119f45d51de1bc94a7ba4e0dd69",
+  "source_checkpoint_sha256": "1be3684a9b36fdfa3b63f42fa3b8b421c4402119f45d51de1bc94a7ba4e0dd69",
+  "onnx_sha256": "a0587c9c16c2615f1e2fdd8a2fa000354631b6d363cf388c30a9f81ef6e5653f",
+  "preprocessing_in_graph": false,
+  "excluded_classes": [
+    "16PSK",
+    "256QAM"
+  ],
+  "export_check": {
+    "passed": true,
+    "max_abs_error": 2.288818359375e-05,
+    "tolerance": 0.001,
+    "provider": "CPUExecutionProvider",
+    "opset": 17,
+    "batch_sizes": [
+      1,
+      2,
+      7,
+      16,
+      31,
+      128
+    ],
+    "cases": [
+      {
+        "input": "recorded_iq",
+        "batch_size": 1,
+        "max_abs_error": 2.86102294921875e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 1,
+        "max_abs_error": 4.76837158203125e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 1,
+        "max_abs_error": 2.288818359375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0
+        }
+      },
+      {
+        "input": "recorded_iq",
+        "batch_size": 2,
+        "max_abs_error": 3.814697265625e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 2,
+        "max_abs_error": 2.6226043701171875e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 2,
+        "max_abs_error": 2.09808349609375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0
+        }
+      },
+      {
+        "input": "recorded_iq",
+        "batch_size": 7,
+        "max_abs_error": 5.245208740234375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 7,
+        "max_abs_error": 5.7220458984375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 7,
+        "max_abs_error": 2.193450927734375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0
+        }
+      },
+      {
+        "input": "recorded_iq",
+        "batch_size": 16,
+        "max_abs_error": 5.7220458984375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 16,
+        "max_abs_error": 3.814697265625e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 16,
+        "max_abs_error": 2.193450927734375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "recorded_iq",
+        "batch_size": 31,
+        "max_abs_error": 5.4836273193359375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 31,
+        "max_abs_error": 4.76837158203125e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 31,
+        "max_abs_error": 2.193450927734375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "recorded_iq",
+        "batch_size": 128,
+        "max_abs_error": 5.7220458984375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "random_iq",
+        "batch_size": 128,
+        "max_abs_error": 5.7220458984375e-06,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      },
+      {
+        "input": "constant_iq",
+        "batch_size": 128,
+        "max_abs_error": 2.193450927734375e-05,
+        "prediction_mismatches": 0,
+        "logit_fusion_mismatches": {
+          "1": 0,
+          "2": 0,
+          "4": 0,
+          "8": 0
+        }
+      }
+    ],
+    "fixture_path": "E:\\嵌赛\\v6\\py\\fixtures\\cli_input.npy",
+    "fixture_sha256": "b7923e68b811c6db68526fb31172597fb622bb60c320f1c7c6808cb0b3fdf74f",
+    "torch_version": "2.14.0+cu130",
+    "onnx_version": "1.20.1",
+    "onnxruntime_version": "1.24.3",
+    "max_abs_logit_error": 2.288818359375e-05,
+    "parity_tolerance": 0.001,
+    "predictions_equal": true,
+    "windows": 555,
+    "real_windows": 16,
+    "real_windows_repeated_across_batch_probes": true,
+    "onnxruntime": "1.24.3"
+  },
+  "training": {
+    "dataset": "E:\\嵌赛\\fullscale_v3",
+    "classes": 18,
+    "best_epoch": 13,
+    "validation_accuracy": 0.8820529513888888,
+    "reused_test_accuracy": 0.880440740003224,
+    "test_is_fresh": false,
+    "train_frames": 512,
+    "validation_frames": 256,
+    "epochs": 16,
+    "learning_rate": 0.0002,
+    "snr_weighting": true
+  },
+  "onnx_file": "fullscale_v6_18class.onnx",
+  "project_version": "fullscale_v6_18class",
+  "input_dtype": "float32",
+  "input_layout": "N,2(I,Q),1024",
+  "normalization_detail": "RMS over 2048 reals; no DC removal or frequency correction",
+  "multi_frame_fusion": "mean_logits",
+  "opset": 17,
+  "best_epoch": 13,
+  "dataset_source": "KU5P_RX1",
+  "training_protocol": "E:\\嵌赛\\v6\\py\\outputs\\fullscale_v3_18class_finetune512_20261101\\protocol.json",
+  "training_protocol_sha256": "739e2bc7be19eaf057a326cba48ecc59830826d57622353018bf7f71b7dd81ed",
+  "bandwidth_filter": {
+    "field": "capture_configuration.tx.bandwidth_hz",
+    "minimum_hz": 60000
+  },
+  "training_loss_weighting": {
+    "kind": "snr_weighted",
+    "snr_weighting": true
+  },
+  "snr_definition": "TX setting SNR; received SNR/SINR is unmeasured",
+  "closed_set": true,
+  "out_of_scope_labels": [
+    "16PSK",
+    "256QAM"
+  ],
+  "created": "2026-11-01T13:42:34+08:00"
+}

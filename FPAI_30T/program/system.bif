@@ -1,0 +1,9 @@
+//arch = fmql; split = false; format = BIN
+the_ROM_image:
+{
+    [bootloader, destination_device = ps] ../vendor/boot_support/FSBL251210_ddr400_demo.out
+    [destination_device = pl] system.bit
+    [destination_cpu = apu_0, destination_device = ps] ../vendor/boot_support/bl31.elf
+    [destination_cpu = apu_0, destination_device = ps] ../vendor/boot_support/u-boot
+    [fsbl_config] apu_x32
+}

@@ -1,0 +1,9 @@
+{
+  "bbpll_hz": 800000000,
+  "adc_hz": 200000000,
+  "rxbbf_div": 7,
+  "lut_address": "R2346*(16*C3_MSB+C3_LSB+14)",
+  "entries": 8192,
+  "bytes_per_entry": 64,
+  "sha256": "dc90802f30a14023cfa7b2983259e78a082e8dcc6ab0f9e07d21189aaceb7889"
+}

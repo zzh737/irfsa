@@ -1,0 +1,67 @@
+{
+  "schema": "V6_PREPROCESS_1",
+  "fs_hz": 1000000,
+  "window_points": 1024,
+  "raw": {
+    "dtype": "int16",
+    "byte_order": "little",
+    "layout": "I0,Q0,I1,Q1,...",
+    "bytes_per_window": 4096
+  },
+  "network": {
+    "name": "iq",
+    "dtype": "float32",
+    "layout": "N,2,L",
+    "shape": [
+      1,
+      2,
+      1024
+    ],
+    "channel_order": [
+      "I",
+      "Q"
+    ],
+    "flatten_order": "C"
+  },
+  "normalization": {
+    "kind": "per_window_rms_no_dc",
+    "formula": "x / sqrt(mean(x*x, axis=(1,2), keepdims=True))",
+    "denominator_count": 2048,
+    "cast_to_float_before_square": true,
+    "shared_iq_scale": true,
+    "zero_rms_skip_below": 1e-08,
+    "mean_removal": false
+  },
+  "window_function": "none",
+  "fixed_iq_scale": null,
+  "frequency_correction": false,
+  "symbol_synchronization": false,
+  "rx_filter": {
+    "applied_in_graph": false,
+    "packaging_applies_additional_filter": false,
+    "training_contains_filtered_and_unfiltered_recordings": true,
+    "requirement": "Preserve capture metadata rx_filter. Never filter the already filtered replay IQ again; validate live-path filter settings separately."
+  },
+  "output": {
+    "name": "logits",
+    "dtype": "float32",
+    "shape": [
+      1,
+      18
+    ],
+    "softmax_in_graph": false
+  },
+  "fusion": {
+    "method": "mean_logits",
+    "default_frames": 1,
+    "require_same_capture_contiguous_sequence_and_sample_index": true
+  },
+  "invalid_packet_filter": {
+    "training_and_packaging_flags_must_equal": 0,
+    "host_flags_mask": 7,
+    "all_zero": true,
+    "adc_low": -2048,
+    "adc_high": 2047,
+    "adc_rail_fraction_max": 0.01
+  }
+}

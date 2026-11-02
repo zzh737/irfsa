@@ -1,0 +1,31 @@
+source_ipfile xgui/processing_system7_v5_5.tcl
+set InstName [get_property PARAM_VALUE.Component_Name]
+set ipfile [add_ipfile -processingOrder normal "${InstName}.xdc"]
+set HW_HANDOFF [add_ipfile -usedIn hw_handoff "hdl//verilog//${InstName}.hwdef"]
+set psinitc [add_ipfile -usedIn hw_handoff "ps7_init.c"]
+set psinith [add_ipfile -usedIn hw_handoff "ps7_init.h"]
+set psinitgplc [add_ipfile -usedIn hw_handoff "ps7_init_gpl.c"]
+set psinitgplh [add_ipfile -usedIn hw_handoff "ps7_init_gpl.h"]
+set psinittcl [add_ipfile -usedIn hw_handoff "ps7_init.tcl"]
+set psinitchtml [add_ipfile -usedIn hw_handoff "ps7_init.html"]
+set constraint_data [xdc_generate IpView [current_outdir ] ]
+# FPAI integration fix: the FMQL wrapper adds a PS7_inst primitive below
+# PS7_i. Clock the surviving primitive pin rather than the wrapper pin that
+# synthesis flattens. The hardware and the generated clock periods are intact.
+set constraint_data [string map [list {PS7_i/FCLKCLK} {PS7_i/PS7_inst/FCLKCLK}] $constraint_data]
+# OOC synthesis has no board XDC. Supply its clock in an OOC-only EARLY file;
+# the NORMAL scoped file then applies output delays. The complete design uses
+# the board clock, avoiding duplicate root clocks and conditional XDC commands.
+if {[string first {get_clocks PJTAG_TCK} $constraint_data] >= 0} {
+    set oocfile [add_ipfile -usedIn {synthesis out_of_context} -processingOrder early "${InstName}_ooc.xdc"]
+    puts_ipfile $oocfile {# FPAI: board-equivalent clock for independent PS IP synthesis.}
+    puts_ipfile $oocfile {create_clock -name PJTAG_TCK -period 100.000 -waveform {0.000 50.000} [get_ports PJTAG_TCK]}
+    close_ipfile $oocfile
+}
+set static_data [split $constraint_data "\n"]
+foreach line $static_data {
+	puts_ipfile $ipfile $line
+}
+close_ipfile $ipfile
+
+
